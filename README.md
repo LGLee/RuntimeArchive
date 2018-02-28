@@ -9,12 +9,12 @@ ps：持久化的技术很多，这里只说归档
 * 存哪里？ 沙盒
 - 沙盒结构如图
 ![这里写图片描述](http://img.blog.csdn.net/20180228160915696?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXBwbGVMZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-#步骤
+# 步骤
 1. 遵守NSCoding协议
 2. 实现归档、接档方法  (重点在这)
 3. 设置归档位置（存哪里）
 4. 开始归档、接档
-##第一版
+## 第一版
 
 ```
 //归档
@@ -34,7 +34,7 @@ return self;
 * 如果这两个方法记不住，先遵守协议，然后command+点击 就能查看具体的协议定义内容，如下图![这里写图片描述](http://img.blog.csdn.net/20180228162014421?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXBwbGVMZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 * 这种做法有缺陷： 归档和解档两个方法对同一属性的操作的key容易写错
 改一下出第二版
-##第二版
+## 第二版
 * 改进一下，使用宏定义来代替key
 
 ```
@@ -105,7 +105,7 @@ return self;
 <font color = red>1. getName: 2. _name  3._isName 4.name 5. isName 6. valueForUndefinedKey:</font>
 * 这种做法也有缺陷：如果有不同的类需要归档呢，就得写很多遍相同的代码。我们可以把它抽出来变成版本四
 
-##第四版
+## 第四版
 
 ```
 //
@@ -157,7 +157,7 @@ clazz = [clazz superclass];
 }
 @end
 ```
-###版本四的使用
+### 版本四的使用
 * 以后使用只需要加入这两行代码就可以了
 ```
 //归档
@@ -202,13 +202,14 @@ return self;\
 
 #endif /* LGArchive_h */
 ```
-###版本五使用
+### 版本五使用
 
 ```
 //一句代码
 LGArchiveImplementation
 ```
-#总结：
+# 总结：
 * 版本五最简单方便
 * 代码地址：https://github.com/LGLee/RuntimeArchive.git
+* blog地址：http://blog.csdn.net/applelg/article/details/79403202
 
